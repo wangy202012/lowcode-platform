@@ -1,0 +1,71 @@
+{
+  "entry": {
+    "index": "./src/index.js"
+  },
+  "vendor": false,
+  "devServer": {
+    "hot": false
+  },
+  "publicPath": "./",
+  "externals": {
+    "react": "var window.React",
+    "react-dom": "var window.ReactDOM",
+    "react-router-dom": "var window.ReactRouterDOM",
+    "prop-types": "var window.PropTypes",
+    "@alifd/next": "var window.Next",
+    "@alilc/lowcode-engine": "var window.AliLowCodeEngine",
+    "@alilc/lowcode-engine-ext": "var window.AliLowCodeEngineExt",
+    "moment": "var window.moment",
+    "lodash": "var window._"
+  },
+  "plugins": [
+    ["build-plugin-react-app"],
+    [
+      "build-plugin-moment-locales",
+      {
+        "locales": ["zh-cn"]
+      }
+    ],
+    "./build.plugin.js"
+  ],
+  "proxy": {
+    "/__api": {
+      "enable": true,
+      "target": "http://localhost:10061",
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/__api": ""
+      }
+    },
+    "/lowcode-base-components": {
+      "enable": true,
+      "target": "http://localhost:10044",
+      "changeOrigin": true
+    },
+    "/fusion-lowcode-materials": {
+      "enable": true,
+      "target": "http://localhost:10044",
+      "changeOrigin": true
+    },
+    "/lowcode-chart-components": {
+      "enable": true,
+      "target": "http://localhost:10044",
+      "changeOrigin": true
+    },
+    "/pkg": {
+      "enable": true,
+      "target": "http://localhost:10044",
+      "changeOrigin": true
+    },
+    "/api": {
+      "enable": true,
+      "target": "http://localhost:10062",
+      "changeOrigin": true
+    },
+    "/passport": {
+      "enable": true,
+      "target": "http://localhost:10043",
+      "changeOrigin": true
+    }
+  }
+}

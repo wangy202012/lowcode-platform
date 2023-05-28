@@ -1,0 +1,17 @@
+oauth-client:
+  client-routes:
+#    - /app/**
+    - /content/**
+    - /record/**
+  server-ip: localhost
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:10041/lowcode_db_202304301452?characterEncoding=utf-8&createDatabaseIfNotExist=true
+  redis:
+    # 这里可以部分属性更新
+    host: localhost
+  elasticsearch:
+    rest:
+      uris:
+        - http://localhost:10042
+

@@ -1,0 +1,3 @@
+-- insert application (app_name,creator,app_path,create_time,update_time) values
+--     ('应用1','robin','/app1',1680171073000,1680171073000),
+--     ('应用2','jack','/app2',1680171073000,1680171073000);

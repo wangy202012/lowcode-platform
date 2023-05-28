@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3fccf819.chunk.css",
+    "main.js": "/static/js/main.45c2adcc.chunk.js",
+    "main.js.map": "/static/js/main.45c2adcc.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.6b3d1213.js",
+    "runtime~main.js.map": "/static/js/runtime~main.6b3d1213.js.map",
+    "static/css/2.d76c1098.chunk.css": "/static/css/2.d76c1098.chunk.css",
+    "static/js/2.4c500891.chunk.js": "/static/js/2.4c500891.chunk.js",
+    "static/js/2.4c500891.chunk.js.map": "/static/js/2.4c500891.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.83e30b3662bbe68a02af996e5bcd06d1.js": "/precache-manifest.83e30b3662bbe68a02af996e5bcd06d1.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.d76c1098.chunk.css.map": "/static/css/2.d76c1098.chunk.css.map",
+    "static/css/main.3fccf819.chunk.css.map": "/static/css/main.3fccf819.chunk.css.map",
+    "static/media/bem-tools.less": "/static/media/bem-tools.886a5271.less",
+    "static/media/borders.less": "/static/media/borders.27827f8e.less",
+    "static/media/cursor.less": "/static/media/cursor.41529ce4.less",
+    "static/media/designer.less": "/static/media/designer.4be5ef1f.less",
+    "static/media/ghost.less": "/static/media/ghost.fc326bef.less",
+    "static/media/host.less": "/static/media/host.4a8f7c6e.less",
+    "static/media/index.less": "/static/media/index.fd1acecc.less",
+    "static/media/insertion.less": "/static/media/insertion.f53e06c0.less",
+    "static/media/project.less": "/static/media/project.ffa2da6a.less",
+    "static/media/resource-view.less": "/static/media/resource-view.759c1593.less",
+    "static/media/sortable.less": "/static/media/sortable.f933f50f.less",
+    "static/media/style.less": "/static/media/style.c7e64c3e.less",
+    "static/media/title.less": "/static/media/title.6b073c68.less",
+    "static/media/workbench.less": "/static/media/workbench.80836493.less"
+  }
+}

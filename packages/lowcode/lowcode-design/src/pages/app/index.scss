@@ -1,0 +1,24 @@
+.app-list-container{
+    .header{
+        font-size: 18px;
+ 
+    }
+    .toolbar {
+        display: flex;
+        justify-content: space-between;
+        padding: 16px;
+    
+    }
+    .table-container{
+        height:calc(100vh - 230px);
+        overflow: auto;
+    }
+ 
+}
+
+.app-path-reminder{
+    font-size: 12px;
+    margin-top: -20px;
+    margin-left: 116px;
+    color: #b85252;
+}

@@ -1,0 +1,16 @@
+.logs-list-container{
+    .header{
+        font-size: 18px;
+ 
+    }
+    .toolbar {
+        display: flex;
+        justify-content: space-between;
+        padding: 16px;
+    
+    }
+    .table-container{
+        height:calc(100vh - 230px);
+        overflow: auto;
+    }
+}

@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  nexus:
+    image: sonatype/nexus3
+    container_name: nexus-npm
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./nexus-data:/nexus-data
+    ports:
+      - 80:8081
+  unpkg:
+    image: robin2017/unpkg:v1
+    container_name: unpkg
+    restart: always
+    ports:
+      - 8080:8080

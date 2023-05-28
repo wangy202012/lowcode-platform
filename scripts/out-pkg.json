@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "env":"source ./lowcode-docker/.env",
+    "ps":"cd ./lowcode-docker && docker-compose ps",
+    "update-manager":"docker image rm robin2017/lowcode-manager:0.0.1-SNAPSHOT",
+    "update-passport":"docker image rm robin2017/lowcode-passport:0.0.1-SNAPSHOT",
+    "start": "cd ./lowcode-docker && export DOCKER_CLIENT_TIMEOUT=240 && export COMPOSE_HTTP_TIMEOUT=240 && npm run start",
+    "start-simple": "cd ./lowcode-docker && export DOCKER_CLIENT_TIMEOUT=240 && export COMPOSE_HTTP_TIMEOUT=240 && npm run start-simple",
+    "start-with-manager":"npm run update-manager && npm run start",
+    "start-with-passport":"npm run update-passport && npm run start",
+    "stop": "cd ./lowcode-docker && npm run down",
+    "restart":"npm run env && npm run stop && npm run start",
+    "restart-simple":"npm run env && npm run stop && npm run start-simple"
+  }
+}

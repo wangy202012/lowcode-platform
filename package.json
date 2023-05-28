@@ -1,0 +1,24 @@
+{
+  "name": "lowcode-platform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "env": "source ./scripts/env",
+    "save": "git add . && git commit -m \"auto save\" --no-verify",
+    "push": "npm run save && git push",
+    "build-design": "cd ./packages/lowcode/lowcode-design && npm run deploy",
+    "build-renderer": "cd ./packages/lowcode/lowcode-renderer && npm run deploy",
+    "build-manager": "sh scripts/build-manager.sh",
+    "build-passport": "sh scripts/build-passport.sh",
+    "build-artifact": "node scripts/build.js",
+    "deploy": "npm run env && npm run build && cd lc-out && npm run restart",
+    "deploy-simple": "npm run env && npm run build && cd lc-out && npm run restart-simple"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}

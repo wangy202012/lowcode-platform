@@ -1,0 +1,37 @@
+server:
+  port: 10043
+  servlet:
+    context-path: /passport
+spring:
+  profiles:
+    active: "@spring.profiles.active@"
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+  application:
+    name: passport-service
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  datasource:
+    username: root
+    password: 12345678
+    url: jdbc:mysql://lowcode-mysql:10041/lowcode_passport_20130428v1?characterEncoding=utf-8&createDatabaseIfNotExist=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+oauth-clients:
+  list:
+    - client-id: lc
+      client-secret: 12345
+      ids:
+        - app
+        - content
+        - record
+      scopes: all
+      redirectUris:
+        - http://${_LOWCODE_DEPLOY_SERVER_IP_}:10060/#/app
+        - https://${_LOWCODE_DEPLOY_SERVER_IP_}:10060/#/app
+        - http://localhost:3000/#/app

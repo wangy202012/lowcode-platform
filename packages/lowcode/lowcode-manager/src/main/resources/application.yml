@@ -1,0 +1,51 @@
+
+spring:
+  application:
+    name: lowcode-manager
+  profiles:
+    active: "@spring.profiles.active@"
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+  datasource:
+    username: root
+    password: 12345678
+#    本地链接不了远程mysql，所以本地开发还是用本地mysql
+    url: jdbc:mysql://lowcode-mysql:10041/lowcode_db_202304301452?characterEncoding=utf-8&createDatabaseIfNotExist=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: lowcode-redis
+    port: 10046
+  elasticsearch:
+    rest:
+      uris:
+        - http://lowcode-elasticsearch:10042
+
+oauth-client:
+  client-id: lc
+  # 本地调试时可以去掉某些路由，或者使用application-dev.yml
+  client-routes:
+    - /app/**
+    - /content/**
+    - /record/**
+  client-secret: 123456
+  server-context: passport
+  server-port: 10040
+  # 真实ip从环境变量中获取
+#  server-ip: 127.0.0.1
+  server-ip: ${_LOWCODE_DEPLOY_SERVER_IP_}
+
+enums:
+  limits:
+    - AppLoggerPath
+
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+#  configuration:
+#    map-underscore-to-camel-case:
+#  configuration:
+#    # 表列和对象属性自动映射
+#    map
+server:
+  port: 10061

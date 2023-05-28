@@ -1,0 +1,19 @@
+{
+  "name": "lowcode-docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "sh db-check.sh  && docker-compose up -d",
+    "start-simple": "sh db-check.sh  && docker-compose -f docker-compose-simple.yml up -d",
+    "down":"docker-compose down",
+    "rm":"docker-compose rm",
+    "desc":"以上为业务相关，以下为底层相关",
+    "start-base": "sh check.sh && docker-compose -f docker-compose-base.yml up -d",
+    "start-nginx": "docker-compose -f docker-compose-nginx.yml up -d",
+    "getpassword":"cat ./nexus-data/admin.password"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,112 @@
+version: '3'
+services:
+  lowcode-mysql:
+    image: "mysql:8.0"
+    container_name: "lowcode-mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: "12345678"
+    restart: always
+    volumes:
+      # 和lc-out同一级目录
+      - "${_LOWCODE_DATA_ROOT_}/mysql_data:/var/lib/mysql"
+      - "./mysql/my.cnf:/etc/my.cnf"
+    ports:
+      - "10041:10041"
+    networks:
+      - lowcode
+  lowcode-elasticsearch:
+    # 适配springboot2.2.2,m1电脑运行不了，必须放在linux服务器上
+    image: elasticsearch:7.17.9  # 和springboot2.7.9保持一致
+    container_name: lowcode-elasticsearch  #定义容器名称
+    restart: always  #开机启动，失败也会一直重启
+    environment:
+      - "cluster.name=elasticsearch" #设置集群名称为elasticsearch
+      - "discovery.type=single-node" #以单一节点模式启动
+      - "ES_JAVA_OPTS=-Xms512m -Xmx1024m" #设置使用jvm内存大小
+    volumes:
+      # mkdir plugins data softwares && chmod 777 plugins data softwares
+      # - ./plugins:/usr/share/elasticsearch/plugins #插件文件挂载
+      - ${_LOWCODE_DATA_ROOT_}/es_data:/usr/share/elasticsearch/data #数据文件挂载
+      - ./es/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - 10042:10042
+    networks:
+      - lowcode
+  lowcode-redis:
+    image: redis:7.0
+    container_name: lowcode-redis
+    volumes:
+      - ${_LOWCODE_DATA_ROOT_}/redis_data:/data
+      - ./redis/redis.conf:/etc/redis.conf
+    restart: always
+    command:
+      redis-server /etc/redis.conf
+    ports:
+      - 10046:10046
+    networks:
+      - lowcode
+
+ 
+  lowcode-passport:
+    image: ${_LOWCODE_DOCKER_NAME_}/lowcode-passport:0.0.1-SNAPSHOT  # 和springboot2.7.9保持一致
+    container_name: lowcode-passport  #定义容器名称
+    restart: always  #开机启动，失败也会一直重启
+    environment:
+      - "_LOWCODE_DEPLOY_SERVER_IP_=${_LOWCODE_DEPLOY_SERVER_IP_}"
+    ports:
+      - 10043:10043
+    networks:
+      - lowcode
+  lowcode-nginx:
+    image: nginx:1.23
+    container_name: "lowcode-nginx"
+    restart: always  #开机启动，失败也会一直重启
+    volumes:
+      # nginx配置
+      - "./nginx-simple:/etc/nginx/conf.d"
+      # 两处来源
+      - "./static:/usr/share/nginx/html/assets"
+      - "${_LOWCODE_DATA_ROOT_}/files:/usr/share/nginx/html/files"
+      # https证书
+      - "./cert:/etc/nginx/cert"
+    networks:
+      - lowcode
+    ports:
+      # 静态资源
+      # - "10044:10044"
+      # - "10047:10047"
+      # https
+      - "10060:10060"
+      - "10040:10040"
+      - "10044:10044"
+  lowcode-manager:
+    image: ${_LOWCODE_DOCKER_NAME_}/lowcode-manager:0.0.1-SNAPSHOT  # 和springboot2.7.9保持一致
+    container_name: lowcode-manager  #定义容器名称
+    restart: always  #开机启动，失败也会一直重启
+    environment:
+      - _LOWCODE_DEPLOY_SERVER_IP_=${_LOWCODE_DEPLOY_SERVER_IP_}
+    ports:
+      - 10061:10061
+    volumes:
+      - "${_LOWCODE_DATA_ROOT_}/logs/:/logs/"
+    networks:
+      - lowcode
+  lowcode-egg:
+    build: ../lowcode/lowcode-egg
+    container_name: "lowcode-egg"
+    restart: always  #开机启动，失败也会一直重启
+    ports:
+      - 10062:10062
+    networks:
+      - lowcode
+    volumes:
+      - "../lowcode/lowcode-egg:/workspace"
+      - "/workspace/node_modules"
+      - "${_LOWCODE_DATA_ROOT_}/files:/root/_nginx_local_"
+
+
+networks:
+  lowcode:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1450

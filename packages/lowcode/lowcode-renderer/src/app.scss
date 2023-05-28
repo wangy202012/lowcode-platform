@@ -1,0 +1,30 @@
+.render-container {
+  .render-container-left {
+    width: 500px;
+    padding: 20px;
+ 
+    border-right: 1px solid #ddd;
+    .left-title{
+      display: flex;
+      height:30px;
+      justify-content: space-between;
+      align-items: center;
+      .label{
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+    #UNIQUE_ID_OF_DIV {
+      width: 460px !important;
+      height:calc(100vh - 70px) !important;
+      border: 1px solid #ccc;
+      // margin-top: 20px;
+    }
+  }
+
+  .render-container-content {
+    flex: 1;
+  }
+  display: flex;
+  height:100%;
+}

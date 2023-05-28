@@ -1,0 +1,53 @@
+{
+  "name": "lowcode-design",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@alifd/next": "^1.23.24",
+    "@alifd/theme-23660": "^0.1.1",
+    "@alilc/lowcode-datasource-fetch-handler": "^1.1.4",
+    "@alilc/lowcode-plugin-inject": "^1.2.2",
+    "@alilc/lowcode-react-renderer": "^1.1.5",
+    "@alilc/lowcode-utils": "^1.1.5",
+    "ace-builds": "^1.16.0",
+    "axios": "^1.3.5",
+    "moment": "^2.29.4",
+    "node-sass": "^4.14.1",
+    "react": "^16.14.0",
+    "react-ace": "^10.1.0",
+    "react-app-rewired": "^2.2.1",
+    "react-dom": "^16.14.0",
+    "react-scripts": "3.1.1"
+  },
+  "scripts": {
+    "start": "cross-env PORT=10046 react-app-rewired start",
+    "build": "react-app-rewired build",
+    "deploy": "npm run build && sh ./scripts/copy-dist.sh"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020
+    }
+  },
+  "resolutions": {
+    "@babel/core": "7.20.12"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}

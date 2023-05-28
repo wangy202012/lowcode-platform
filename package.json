@@ -12,8 +12,8 @@
     "build-manager": "sh scripts/build-manager.sh",
     "build-passport": "sh scripts/build-passport.sh",
     "build-artifact": "node scripts/build.js",
-    "deploy": "npm run env && npm run build && cd lc-out && npm run restart",
-    "deploy-simple": "npm run env && npm run build && cd lc-out && npm run restart-simple"
+    "deploy": "npm run env && npm run build-artifact && cd lc-out && npm run restart",
+    "deploy-simple": "npm run env && npm run build-artifact && cd lc-out && npm run restart-simple"
   },
   "keywords": [],
   "author": "",

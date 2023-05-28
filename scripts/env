@@ -2,15 +2,12 @@
 export _LOWCODE_DEPLOY_SERVER_IP_=localhost
 # export _LOWCODE_DEPLOY_SERVER_IP_=43.137.18.227
 # export _LOWCODE_DEPLOY_SERVER_IP_=120.26.13.156
-# export _LOWCODE_DEPLOY_SERVER_IP_=brain001v.sarp.bjzdt.qihoo.net
-
 
 # docker的用户名
 export _LOWCODE_DOCKER_NAME_=robin2017
 
 # lowcode数据目录
-export _LOWCODE_DATA_ROOT_=/Users/luobin3/_lowcode_data_
-# export _LOWCODE_DATA_ROOT_=/root/_lowcode_data_
+export _LOWCODE_DATA_ROOT_=/root/_lowcode_data_
 
 # 应用名称及配置
-export _LOWCODE_APP_NAME_=监管态势搭建系统
+export _LOWCODE_APP_NAME_=统一权限平台
